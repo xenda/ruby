@@ -3205,19 +3205,17 @@ env_update(VALUE env, VALUE hash)
  *    books[:black] = "The Well-Grounded Rubyist"
  * 
  *  Hashes are also commonly used as a way to have named parameters
- *  in functions: 
+ *  in functions. Note that no brackes are used below. If a hash is 
+ *  the last argument on a method call, no braces are needed,  
+ *  thus creating a really clean interface: 
  *  
- *    Person.create({name: "John Doe", age: 27})
+ *    Person.create(name: "John Doe", age: 27)
  *
  *    def self.create(params)
  *      @name = params[:name]
  *      @age  = params[:age]
  *    end
  *
- *  If a hash is the last argument on a method call, no braces are needed,  
- *  thus creating a really clean interface: 
- *
- *    Person.create( name: "John Doe", age: 27 )
  *
  */
 
