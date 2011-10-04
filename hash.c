@@ -3158,7 +3158,7 @@ env_update(VALUE env, VALUE hash)
  *  Hashes enumerate their values in the order that
  *  the corresponding keys were inserted. 
  *
- *  A Hash can be easily created by using it's implicit form:
+ *  A Hash can be easily created by using its implicit form:
  *
  *    grades = {"Jane Doe": 10, "Jim Doe": 8}
  * 
@@ -3196,12 +3196,17 @@ env_update(VALUE env, VALUE hash)
  *  Hashes are also commonly used as a way to have named parameters
  *  in functions: 
  *  
- *    Person.create(name: "John Doe", age: 27)
+ *    Person.create({name: "John Doe", age: 27})
+ *
+ *    def self.create(params)
+ *      @name = params[:name]
+ *      @age  = params[:age]
+ *    end
  *
  *  If a hash is the last argument on a method call, no braces are needed,  
- *  thus creating a really clean interface.
+ *  thus creating a really clean interface: 
  *
- *
+ *    Person.create( name: "John Doe", age: 27 )
  *
  */
 
