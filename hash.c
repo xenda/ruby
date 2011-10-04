@@ -3151,37 +3151,49 @@ env_update(VALUE env, VALUE hash)
 
 /*
  *  A <code>Hash</code> is a dictionary-like collection of unique keys and 
- *  their values. Also called associative arrays, they are similar to the 
- *  <code>Array</code>, but where an <code>Array</code> uses integers 
- *  as its index, <code>Hash</code> allows you to use any object type. 
+ *  their values. Also called associative arrays, they are similar to
+ *  Arrays, but where an <code>Array</code> uses integers 
+ *  as its index, a <code>Hash</code> allows you to use any object type. 
  *
  *  Hashes enumerate their values in the order that
  *  the corresponding keys were inserted. 
  *
  *  A Hash can be easily created by using its implicit form:
  *
- *    grades = {"Jane Doe": 10, "Jim Doe": 8}
+ *    grades = {"Jane Doe" => 10, "Jim Doe" => 6}
+ *  
+ *  Hashes allow an alternate syntax form when your keys are always symbols.
+ *  Instead of 
+ *
+ *    options = {:font_size => 10, :font_family => "Arial"}
  * 
- *  Hashes also allow an alternal syntax form, which is valid and
- *  the only one for previous versions of Ruby (though the current one
- *  is recommended for it's terseness and cleanness):
+ *  You could write it as: 
  *
- *    grades = {"Jane Doe" => 10, "Jim Doe" => 8}
+ *    options = {font_size: 10, font_family: "Arial"}
+ * 
+ *  Each named key will be converted as a symbol for you to use 
+ *  on the hash:
  *
- *  If needed, a Hash can also be created through it's 
- *  new method:
+ *    options[:font_size]  #=> 10
+ *
+ *  A Hash can also be created through its <code>new</code> method:
  *
  *    grades = Hash.new
  *    grades["Dorothy Doe"] = 9
  *
  *  Hashes have a <em>default value</em> that is returned when accessing
  *  keys that do not exist in the hash. By default, that value is
- *  <code>nil</code>. You can setup it's default value by sending it as
+ *  <code>nil</code>. You can setup its default value by sending it as
  *  an argument on the Hash initialization: 
  *
  *    grades = Hash.new(0)
+ *
+ *  Or by using its <code>default</code> method:
+ *
+ *    grades = {"Timmy Doe" => 8}
+ *    grades.default = 0
  *     
- *  Accessing a Hash requires using it's key:
+ *  Accessing a Hash requires using its key:
  *
  *    puts grades["Jane Doe"] #=> 10
  *   
