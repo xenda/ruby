@@ -3150,14 +3150,58 @@ env_update(VALUE env, VALUE hash)
 }
 
 /*
- *  A <code>Hash</code> is a collection of key-value pairs. It is
- *  similar to an <code>Array</code>, except that indexing is done via
- *  arbitrary keys of any object type, not an integer index. Hashes enumerate
- *  their values in the order that the corresponding keys were inserted.
+ *  A <code>Hash</code> is a dictionary-like collection of unique keys and 
+ *  their values. Also called associative arrays, they are similar to the 
+ *  <code>Array</code>, but where an <code>Array</code> uses integers 
+ *  as its index, <code>Hash</code> allows you to use any object type. 
+ *
+ *  Hashes enumerate their values in the order that
+ *  the corresponding keys were inserted. 
+ *
+ *  A <code>Hash</code> can be easily created by using it's implicit form:
+ *
+ *      grades = {"Jane Doe": 10, "Jim Doe": 8}
+ * 
+ *  Hashes also allow an alternal syntax form, which is valid and
+ *  the only one for previous versions of Ruby (though the current one
+ *  is recommended for it's terseness and cleanness):
+ *
+ *      grades = {"Jane Doe" => 10, "Jim Doe" => 8}
+ *
+ *  If needed, a <code>Hash</code> can also be created through it's 
+ *  <code>new</code> method:
+ *
+ *      grades = Hash.new
+ *      grades["Dorothy Doe"] = 9
  *
  *  Hashes have a <em>default value</em> that is returned when accessing
  *  keys that do not exist in the hash. By default, that value is
- *  <code>nil</code>.
+ *  <code>nil</code>. You can setup it's default value by sending it as
+ *  an argument on the <code>Hash</code> initialization: 
+ *
+ *      grades = Hash.new(0)
+ *     
+ *  Accessing a <code>Hash</code> requires using it's key:
+ *
+ *      puts grades["Jane Doe"] #=> 10
+ *   
+ *  === Common Uses
+ *
+ *  Hashes are an easy way to represent data structures, such as
+ *
+ *      books         = {}
+ *      books[:matz]  = "The Ruby Language"
+ *      books[:black] = "The Well-Grounded Rubyist"
+ * 
+ *  Hashes are also commonly used as a way to have named parameters
+ *  in functions: 
+ *  
+ *      Person.create(name: "John Doe", age: 27)
+ *
+ *  If a hash is the last argument on a method call, no braces are needed,  
+ *  thus creating a really clean interface.
+ *
+ *
  *
  */
 
