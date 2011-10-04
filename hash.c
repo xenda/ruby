@@ -3171,8 +3171,7 @@ env_update(VALUE env, VALUE hash)
  *
  *    options = {font_size: 10, font_family: "Arial"}
  * 
- *  Each named key will be converted as a symbol for you to use 
- *  on the hash:
+ *  Each named key is a symbol you can access in hash:
  *
  *    options[:font_size]  #=> 10
  *
