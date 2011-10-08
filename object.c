@@ -2544,10 +2544,17 @@ rb_f_array(VALUE obj, VALUE arg)
  *  Classes in Ruby are first-class objects---each is an instance of
  *  class <code>Class</code>.
  *
- *  When a new class is created (typically using <code>class Name ...
- *  end</code>), an object of type <code>Class</code> is created and
- *  assigned to a global constant (<code>Name</code> in this case). When
- *  <code>Name.new</code> is called to create a new object, the
+ *  Typically, you create a new class by using:
+ *
+ *    class Name
+ *     # some class describing the class behavior
+ *    end
+ *
+ *  When a new class is created, an object of type <code>Class</code> 
+ *  is initialized and assigned to a global constant (<code>Name</code>
+ *  in this case). 
+ *
+ *  When <code>Name.new</code> is called to create a new object, the
  *  <code>new</code> method in <code>Class</code> is run by default.
  *  This can be demonstrated by overriding <code>new</code> in
  *  <code>Class</code>:
@@ -2670,12 +2677,17 @@ rb_f_array(VALUE obj, VALUE arg)
 
 /*  Document-class: Object
  *
- *  Object is the root of Ruby's class hierarchy.  Its methods are available
- *  to all classes unless explicitly overridden.
+ *  Object is the root of Ruby's class hierarchy, except from BasicObject
+ *  from which it inherits. Its methods are available to all classes unless 
+ *  explicitly overridden.
  *
  *  Object mixes in the Kernel module, making the built-in kernel functions
  *  globally accessible. Although the instance methods of Object are defined
  *  by the Kernel module, we have chosen to document them here for clarity.
+ * 
+ *  Different from BasicObject, it is not outside of the namespace of the 
+ *  standard library. Common classes do not need to be found with a full class 
+ *  path.
  *
  *  In the descriptions of Object's methods, the parameter <i>symbol</i> refers
  *  to a symbol, which is either a quoted string or a Symbol (such as
